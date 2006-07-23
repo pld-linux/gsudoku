@@ -56,7 +56,7 @@ sed -i "s#strcat(str,path)#//strcat(str,path)#g" help_about.c
 
 %build
 # not my fault, there is no Makefile
-gcc -DLINUX gsudoku.c generator_solver.c menu.c settings.c gsignal.c \
+%{__cc} -DLINUX gsudoku.c generator_solver.c menu.c settings.c gsignal.c \
 	da_interactive.c da_drawing.c other.c help_about.c -o gsudoku \
 	`pkg-config --cflags --libs gtk+-2.0 gthread-2.0` %{rpmcflags}
 
