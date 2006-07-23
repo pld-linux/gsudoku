@@ -1,0 +1,100 @@
+diff -urN gsudoku_02_source.orig/gsudoku.c gsudoku_02_source/gsudoku.c
+--- gsudoku_02_source.orig/gsudoku.c	2005-11-29 22:28:00.000000000 +0100
++++ gsudoku_02_source/gsudoku.c	2006-07-23 22:55:23.033877250 +0200
+@@ -37,6 +37,8 @@
+ #include <gtk/gtk.h>
+ #include "gsudoku.h"
+ #include <stdio.h>
++#include <strings.h>
++#include <stdlib.h>
+ #ifdef WIN
+ #include <windows.h>
+ #endif
+@@ -66,6 +68,24 @@
+ #endif
+ 
+ //88get_executable_path8888888888888999888888888888888888888888888888888888888888888888888888
++
++char *get_config_path()
++{
++#ifdef LINUX
++  char *home;
++  static char config_path[2048];
++
++  bzero(config_path, sizeof(config_path));
++  home = getenv("HOME");
++  if (home)
++	  strncpy(config_path, home, sizeof(config_path)-64);
++  strcat(config_path, "/.gsudokurc");
++  return config_path;
++#else
++  return "settings";
++#endif
++}
++
+ //88change_slash88888888888888888888888888888888888888888888888888888888888888888888888888888
+ 
+ #ifdef WIN
+@@ -118,6 +138,7 @@
+ {
+ 
+   FILE *fp;
++  char *config_path;
+   gint response;
+   
+   int value;
+@@ -161,6 +182,7 @@
+            gtk_dialog_run (GTK_DIALOG (message_dialog));
+            gtk_widget_destroy (message_dialog);
+   */
++  config_path=get_config_path();
+   #ifdef LINUX
+   get_executable_path(path,sizeof(path));
+   chdir(path);
+@@ -196,12 +218,12 @@
+    
+    gtk_window_set_default_icon_list(icon_list);
+ 
+-   fp=fopen("settings","r");
++   fp=fopen(config_path,"r");
+ 
+ //   if(fp==NULL || 1)
+    if(fp==NULL)
+    {
+-     fp=fopen("settings","w");
++     fp=fopen(config_path,"w");
+    
+      strcpy(ch,"Note: Take a backup before you edit\n\n");
+      fprintf(fp,"%s\n",ch);
+@@ -533,7 +555,7 @@
+    
+    
+      fclose(fp);
+-     fp=fopen("settings","r");
++     fp=fopen(config_path,"r");
+    }
+    
+    
+diff -urN gsudoku_02_source.orig/gsudoku.h gsudoku_02_source/gsudoku.h
+--- gsudoku_02_source.orig/gsudoku.h	2005-11-29 00:10:00.000000000 +0100
++++ gsudoku_02_source/gsudoku.h	2006-07-23 22:41:21.601291000 +0200
+@@ -296,6 +296,7 @@
+  
+  
+ //In gsudoku.c 
++char *get_config_path();
+ #ifdef LINUX
+ void get_executable_path(char* buffer,size_t len);
+ #endif
+diff -urN gsudoku_02_source.orig/other.c gsudoku_02_source/other.c
+--- gsudoku_02_source.orig/other.c	2005-11-29 11:56:00.000000000 +0100
++++ gsudoku_02_source/other.c	2006-07-23 22:42:04.643981000 +0200
+@@ -455,7 +455,7 @@
+   FILE *fp;
+   char ch[255];
+   int value;
+-  fp=fopen("settings","w");
++  fp=fopen(get_config_path(),"w");
+    
+   strcpy(ch,"Note: Take a backup before you edit\n\n");
+   fprintf(fp,"%s\n",ch);
