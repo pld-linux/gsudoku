@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Gsudoku
+Name=G-Sudoku
 Comment=A sudoku solver and generator
 Comment[pl]=Program do rozwiązywania i tworzenia sudoku
 Exec=gsudoku
