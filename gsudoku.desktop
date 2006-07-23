@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=gsudoku
+Comment=A sudoku solver and generator
+Comment[pl]=Program do rozwiązywania i tworzenia sudoku
+Exec=gsudoku
+Icon=gsudoku.png
+Terminal=false
+Type=Application
+Categories=GTK;Game;BoardGame;
+# vi: encoding=utf-8
