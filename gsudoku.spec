@@ -10,7 +10,7 @@ Source0:	http://www.yzonesoft.com/gsudoku/files/%{name}_%{version}_source.zip
 Source1:	%{name}.desktop
 Patch0:		%{name}-paths.patch
 URL:		http://www.yzonesoft.com/gsudoku/gsudoku.html
-BuildRequires:	gtk+2 >= 2.4
+BuildRequires:	gtk+2-devel >= 2.4
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
