@@ -80,5 +80,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.TXT Release_notes.txt manual
 %attr(755,root,root) %{_bindir}/gsudoku
 %{_datadir}/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
