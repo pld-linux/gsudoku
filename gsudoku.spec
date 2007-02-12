@@ -1,5 +1,5 @@
 Summary:	A sudoku solver and generator
-Summary(pl):	Program do tworzenia i rozwi±zywania sudoku
+Summary(pl.UTF-8):   Program do tworzenia i rozwiÄ…zywania sudoku
 Name:		gsudoku
 Version:	02
 Release:	1
@@ -18,8 +18,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 A sudoku solver and generator.
 
-%description -l pl
-Program do tworzenia i rozwi±zywania sudoku.
+%description -l pl.UTF-8
+Program do tworzenia i rozwiÄ…zywania sudoku.
 
 %prep
 %setup -q -n %{name}_%{version}_source
