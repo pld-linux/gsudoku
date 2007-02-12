@@ -1,5 +1,5 @@
 Summary:	A sudoku solver and generator
-Summary(pl.UTF-8):   Program do tworzenia i rozwiązywania sudoku
+Summary(pl.UTF-8):	Program do tworzenia i rozwiązywania sudoku
 Name:		gsudoku
 Version:	02
 Release:	1
