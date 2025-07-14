@@ -24,7 +24,7 @@ Program do tworzenia i rozwiązywania sudoku.
 
 %prep
 %setup -q -n %{name}_%{version}_source
-%patch0 -p1
+%patch -P0 -p1
 
 find . -name '*~' -print0 | xargs -0 -r -l512 rm -f
 cd manual
